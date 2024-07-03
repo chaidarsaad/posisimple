@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Auth\CustomLogin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -30,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('dashboard')
             ->path('dashboard')
-            ->login(Login::class)
+            ->login(CustomLogin::class)
             ->colors([
                 'primary' => Color::Red,
             ])
