@@ -19,16 +19,15 @@ class ProductsImport implements ToModel, WithHeadingRow, WithMultipleSheets, Ski
         ];
     }
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
         // dd($row);
         return new Product([
             'name' => $row['name'],
-            'slug' => Product::generateUniqueSlug($row['name']),
             'category_id' => $row['category_id'],
             'stock' => $row['stock'],
             'price' => $row['price'],

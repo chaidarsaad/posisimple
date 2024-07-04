@@ -19,11 +19,13 @@ class StatsOverview extends BaseWidget
         $startDate = now()->startOfMonth();
         $endDate = now()->endOfMonth();
 
-        if (!is_null($this->filters['startDate'] ?? null)) {
+        // Check if startDate filter is provided
+        if (!empty($this->filters['startDate'])) {
             $startDate = Carbon::parse($this->filters['startDate']);
         }
 
-        if (!is_null($this->filters['endDate'] ?? null)) {
+        // Check if endDate filter is provided
+        if (!empty($this->filters['endDate'])) {
             $endDate = Carbon::parse($this->filters['endDate']);
         }
 

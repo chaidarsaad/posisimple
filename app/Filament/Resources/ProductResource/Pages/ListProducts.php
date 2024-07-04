@@ -9,7 +9,8 @@ use Filament\Actions\Action;
 use App\Imports\ProductsImport;
 use Filament\Forms\Components\FileUpload;
 use Maatwebsite\Excel\Facades\Excel;
-use Filament\Notifications\Notification; 
+use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Session;
 
 class ListProducts extends ListRecords
 {
@@ -19,34 +20,33 @@ class ListProducts extends ListRecords
     {
         return [
             Action::make('importProducts')
-                    ->label('Import Product')
-                    ->icon('heroicon-s-arrow-down-tray')
-                    ->form([
-                        FileUpload::make('attachment')
-                            ->label('Upload Template')
-                    ])
-                    ->action(function (array $data) {
-                        $file = public_path('storage/' .$data['attachment']);
+                ->label('Import Product')
+                ->icon('heroicon-s-arrow-down-tray')
+                ->form([
+                    FileUpload::make('attachment')
+                        ->label('Upload Template')
+                ])
+                ->action(function (array $data) {
+                    $file = public_path('storage/' . $data['attachment']);
 
-                        try {
-                            Excel::import(new ProductsImport, $file);
-                            Notification::make()
-                                ->title('Products Imported')
-                                ->success()
-                                ->send();
-                        }  catch (\Exception $e) {
-                            Notification::make()
-                                ->title('Products Failed to Import')
-                                ->danger()
-                                ->send();
-                        }
-
-                    }),
+                    try {
+                        Excel::import(new ProductsImport, $file);
+                        Notification::make()
+                            ->title('Products Imported')
+                            ->success()
+                            ->send();
+                    } catch (\Exception $e) {
+                        Notification::make()
+                            ->title('Products Failed to Import')
+                            ->danger()
+                            ->send();
+                    }
+                }),
             Action::make('Download Template')
                 ->url(route('export-categories'))
                 ->color('warning'),
             Actions\CreateAction::make(),
-            
+
         ];
     }
 
