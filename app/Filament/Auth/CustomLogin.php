@@ -3,7 +3,7 @@
 namespace App\Filament\Auth;
 
 use App\Filament\Pages\Auth\Login;
-use Dotenv\Exception\ValidationException;
+use Illuminate\Validation\ValidationException;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
 
