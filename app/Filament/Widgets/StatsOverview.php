@@ -32,8 +32,6 @@ class StatsOverview extends BaseWidget
         $product_count = Product::count();
         $order_count = Order::whereBetween('created_at', [$startDate, $endDate])->count();
         $omset = Order::whereBetween('created_at', [$startDate, $endDate])->sum('total_price');
-
-
         $expense = Expense::whereBetween('date_expense', [$startDate, $endDate])->sum('amount');
         $lababersih = $omset - $expense;
         return [
