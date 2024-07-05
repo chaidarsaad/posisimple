@@ -131,6 +131,10 @@ class OrderResource extends Resource
                     ->money('IDR')
                     ->label('Total (Rp)')
                     ->sortable(),
+                // ->summarize([
+                //     Tables\Columns\Summarizers\Sum::make()
+                //         ->money('IDR'),
+                // ]),
                 Tables\Columns\TextColumn::make('paid_amount')
                     ->money('IDR')
                     ->label('Uang dibayar (Rp)')
