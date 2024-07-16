@@ -127,6 +127,9 @@ class OrderResource extends Resource
                     ->label('Metode Pembayaran')
                     ->badge()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('items.product.name')
+                    ->label('Product')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('total_price')
                     ->money('IDR')
                     ->label('Total (Rp)')
