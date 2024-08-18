@@ -37,7 +37,7 @@ class ListProducts extends ListRecords
                             ->send();
                     } catch (\Exception $e) {
                         Notification::make()
-                            ->title('Products Failed to Import')
+                            ->title($e->getMessage())
                             ->danger()
                             ->send();
                     }

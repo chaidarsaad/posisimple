@@ -40,7 +40,7 @@ class ProductResource extends Resource
                                 Forms\Components\Select::make('category_id')
                                     ->searchable()
                                     ->preload()
-                                    ->relationship('category', 'name', modifyQueryUsing: fn (Builder $query) => $query->orderBy('id', 'desc'))
+                                    ->relationship('category', 'name', modifyQueryUsing: fn(Builder $query) => $query->orderBy('id', 'desc'))
                                     ->native(false)
                                     ->required(),
                                 Forms\Components\TextInput::make('name')
@@ -88,6 +88,7 @@ class ProductResource extends Resource
 
                                 Forms\Components\FileUpload::make('image')
                                     ->image(),
+                                // ->resize(10),
                                 Forms\Components\Toggle::make('is_active')
                                     ->required(),
                             ])
@@ -106,7 +107,7 @@ class ProductResource extends Resource
                 Tables\Columns\ImageColumn::make('image'),
 
                 Tables\Columns\TextColumn::make('name')
-                    ->description(fn (Product $record): string => ($record->category) ? $record->category->name : '-')
+                    ->description(fn(Product $record): string => ($record->category) ? $record->category->name : '-')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('id')->label('SKU/ID'),
                 Tables\Columns\TextColumn::make('barcode')
