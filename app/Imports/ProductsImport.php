@@ -43,7 +43,7 @@ class ProductsImport implements ToModel, WithHeadingRow, WithMultipleSheets, Ski
             '*.category_id' => 'required|exists:categories,id',
             '*.stock' => 'required|integer|min:0',
             '*.price' => 'required|numeric|min:0',
-            '*.barcode' => 'required|string|unique:products,barcode',
+            '*.barcode' => 'string|unique:products,barcode',
         ];
     }
 
